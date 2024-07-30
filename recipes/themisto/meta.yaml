@@ -12,6 +12,9 @@ source:
 build:
   number: 0
 
+  ## need GCC >= v11 to build which macs don't have
+  skip: True # [osx]
+
 requirements:
   build:
     - {{ compiler('c') }}

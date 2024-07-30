@@ -25,6 +25,8 @@ sed 's/g++/$(CXX)/g' ggcat/crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
 mv tmp_makefile ggcat/crates/capi/ggcat-cpp-api/Makefile
 sed 's/g++/$(CXX)/g' ggcat/crates/capi/ggcat-cpp-api/example/Makefile > tmp_makefile
 mv tmp_makefile ggcat/crates/capi/ggcat-cpp-api/example/Makefile
+sed 's/cp ..\/..\/..\/target\/release\/libggcat_cpp_bindings.a/cp $(find ..\/..\/..\/ -iname "libggcat_cpp_bindings.a"/g' ggcat/crates/capi/ggcat-cpp-api/example/Makefile > tmp_makefile
+mv tmp_makefile ggcat/crates/capi/ggcat-cpp-api/example/Makefile
 sed 's/g++/$(CXX)/g' integration_tests/reference_implementation/Makefile > tmp_makefile
 mv tmp_makefile integration_tests/reference_implementation/Makefile
 sed 's/g++/$(CXX)/g' SBWT/KMC/Makefile > tmp_makefile
