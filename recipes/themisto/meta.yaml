@@ -1,0 +1,49 @@
+{% set name = "Themisto" %}
+{% set version = "3.2.2" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/algbio/{{ name|lower }}.git
+  git_rev: v{{ version }}
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ compiler('rust') }}
+    - cmake >=3.1.0
+    - make
+    - git
+    - wget
+  host:
+    - zlib
+    - bzip2
+    - llvm-openmp  # [osx]
+    - libgomp      # [linux]
+
+test:
+  commands:
+    - themisto --help
+
+about:
+  home: https://github.com/algbio/themisto
+  license: GPL-2.0
+  license_family: GPL
+  license_file: LICENSE.txt
+  summary: 'Themisto - Space-efficient pseudoalignment with a colored de Bruijn graph'
+
+extra:
+  identifiers:
+    - doi:10.1101/2023.02.24.529942
+  recipe-maintainers:
+    - tmaklin
+    - jnalanko
+  skip-lints:
+    - uses_vcs_url
+    - missing_hash
