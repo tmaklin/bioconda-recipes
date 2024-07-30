@@ -1,4 +1,4 @@
-{% set name = "GGCAT" %}
+{% set name = "ggcat" %}
 {% set version = "a91ecc9" %}
 
 package:
@@ -11,11 +11,13 @@ source:
 
 build:
   number: 0
+  script: "cargo install --no-track --locked --verbose --root \"${PREFIX}\" --path ."
+  run_exports:
+    - {{ pin_subpackage("ggcat", max_pin="x.x") }}
 
 requirements:
   build:
     - {{ compiler('rust') }}
-    - git
 
 test:
   commands:
