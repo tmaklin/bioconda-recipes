@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -xe
-
-cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DBOOST_ROOT=$PREFIX -DBoost_NO_SYSTEM_PATHS=ON -DCMAKE_CXX_COMPILER=${CXX} .
-VERBOSE=TRUE make -j ${CPU_COUNT}
-make install

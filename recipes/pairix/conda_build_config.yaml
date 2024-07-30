@@ -1,3 +1,0 @@
-# current version does not build with newer compilers
-c_compiler_version:
-  - 14  # [osx]

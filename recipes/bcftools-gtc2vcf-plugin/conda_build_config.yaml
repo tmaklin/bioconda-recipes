@@ -1,7 +1,0 @@
-htslib:
-  - 1.19
-bcftools:
-  - 1.19
-pin_run_as_build:
-  htslib: x.x
-  bcftools: x.x
