@@ -25,7 +25,8 @@ sed 's/ar cr/$(AR) cr/g' ggcat/crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
 mv tmp_makefile ggcat/crates/capi/ggcat-cpp-api/Makefile
 sed 's/cargo build --release/cargo build --release --target-dir ./g' ggcat/crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
 mv tmp_makefile ggcat/crates/capi/ggcat-cpp-api/Makefile
-sed 's/cp ..\/..\/..\/target\//cp /g' ggcat/crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
+sed 's/cp.*$/LIBGGCAT_CPP_BINDINGS_PATH=$(find . -iname "libggcat_cpp_bindings.a")/g' ggcat/crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
+echo 'cp $LIBGGCAT_CPP_BINDINGS_PATH ./lib/' >> tmp_makefile
 mv tmp_makefile ggcat/crates/capi/ggcat-cpp-api/Makefile
 
 sed 's/g++/$(CXX)/g' ggcat/crates/capi/ggcat-cpp-api/example/Makefile > tmp_makefile
@@ -42,5 +43,3 @@ mv tmp_makefile SBWT/KMC/tests/kmc_CLI/trivial-k-mer-counter/Makefile
 cd build
 cmake .. -DMAX_KMER_LENGTH=64 -DCMAKE_BUILD_ZLIB=1 -DCMAKE_BUILD_BZIP2=0 -DROARING_DISABLE_NATIVE=ON
 make -j${CPU_COUNT} ${VERBOSE_AT}
-
-cp bin/themisto $PREFIX/bin
