@@ -1,9 +1,5 @@
 #!/bin/sh
 
-## Building rust packages requires MacOS SDK v > 10.12
-export MACOS_DEPLOYMENT_TARGET=12.7
-export MACOSX_DEPLOYMENT_TARGET=12.7
-
 git submodule update --init --recursive
 
 sed 's/ar cr/$(AR) cr/g' crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
