@@ -1,6 +1,10 @@
+MACOS_SDK_VERSION:         # [osx]
+  - 12.7                   # [osx]
+MACOS_DEPLOYMENT_TARGET:   # [osx]
+  - 12.7                   # [osx]
 MACOSX_SDK_VERSION:        # [osx]
-  - "10.13"                # [osx]
+  - 12.7                   # [osx]
 MACOSX_DEPLOYMENT_TARGET:  # [osx]
-  - "10.13"                # [osx]
+  - 12.7                   # [osx]
 rust_compiler_version:
   - 1.78.0
