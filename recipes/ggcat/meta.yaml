@@ -18,6 +18,8 @@ requirements:
     - {{ stdlib('c') }}
     - git
 
+  skip: True # [osx]
+
 test:
   commands:
     - ggcat build --help

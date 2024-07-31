@@ -25,7 +25,7 @@ sed 's/ar cr/$(AR) cr/g' ggcat/crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
 mv tmp_makefile ggcat/crates/capi/ggcat-cpp-api/Makefile
 sed 's/cargo build --release/cargo build --release --target-dir ./g' ggcat/crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
 mv tmp_makefile ggcat/crates/capi/ggcat-cpp-api/Makefile
-sed 's/cp[[:space:]].*$/LIBGGCAT_CPP_BINDINGS_PATH=$(shell cd $CONDA_PREFIX && find $(pwd -P) -iname "libggcat_cpp_bindings.a")/g' ggcat/crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
+sed 's/cp[[:space:]].*$/LIBGGCAT_CPP_BINDINGS_PATH=$(shell find / -iname "libggcat_cpp_bindings.a")/g' ggcat/crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
 echo -e '\tcp $(LIBGGCAT_CPP_BINDINGS_PATH) ./lib/' >> tmp_makefile
 mv tmp_makefile ggcat/crates/capi/ggcat-cpp-api/Makefile
 
