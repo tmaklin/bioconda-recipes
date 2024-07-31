@@ -16,6 +16,7 @@ requirements:
   build:
     - {{ compiler('rust') }}
     - git
+    - openssl # [osx]
 
 test:
   commands:
