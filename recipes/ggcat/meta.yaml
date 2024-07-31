@@ -12,15 +12,11 @@ source:
 build:
   number: 0
 
-  run_exports:
-    - {{ pin_subpackage('ggcat', max_pin="x") }}
-
 requirements:
   build:
     - {{ compiler('rust') }}
+    - {{ stdlib("c") }}
     - git
-  run_constrained:
-    - __osx >={{ MACOSX_DEPLOYMENT_TARGET }}  # [osx]
 
 test:
   commands:

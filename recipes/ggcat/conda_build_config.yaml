@@ -1,8 +1,6 @@
-MACOSX_DEPLOYMENT_TARGET:  # [osx and x86_64]
-  - "10.15"                # [osx and x86_64]
+c_stdlib_version:          # [osx and x86_64]
+  - 10.15                  # [osx and x86_64]
 MACOSX_SDK_VERSION:        # [osx and x86_64]
   - "10.15"                # [osx and x86_64]
-OSX_FORCE_SDK_DOWNLOAD:    # [osx and x86_64]
-  - "1"                    # [osx and x86_64]
 rust_compiler_version:
   - 1.78.0

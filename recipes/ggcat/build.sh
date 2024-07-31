@@ -23,4 +23,9 @@ mv tmp_makefile crates/capi/ggcat-cpp-api/Makefile
 sed 's/g++/$(CXX)/g' crates/capi/ggcat-cpp-api/example/Makefile > tmp_makefile
 mv tmp_makefile crates/capi/ggcat-cpp-api/example/Makefile
 
-cargo build --release
+cargo build --release --target-dir .
+
+path=$(find . -iname "ggcat")
+
+mkdir -p $PREFIX/bin
+cp $path $PREFIX/bin
