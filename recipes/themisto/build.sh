@@ -21,14 +21,16 @@ echo '#include <cstdint>' | cat - SBWT/KMC/kmc_tools/kff_info_reader.h > temp &&
 echo '#include <cstdint>' | cat - SBWT/KMC/kmc_core/kff_writer.h > temp && mv temp SBWT/KMC/kmc_core/kff_writer.h
 echo '#include <cstdint>' | cat - ggcat/crates/capi/ggcat-cpp-api/src/ggcat.hh > temp && mv temp ggcat/crates/capi/ggcat-cpp-api/src/ggcat.hh
 
-sed 's/g++/$(CXX)/g' ggcat/crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
+sed 's/ar/$(AR)/g' ggcat/crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
+sed 's/cp ..\/..\/..\/target\/release\/libggcat_cpp_bindings.a/cp $(find ..\/..\/..\/ -iname "libggcat_cpp_bindings.a"/g' tmp_makefile
 mv tmp_makefile ggcat/crates/capi/ggcat-cpp-api/Makefile
+
 sed 's/g++/$(CXX)/g' ggcat/crates/capi/ggcat-cpp-api/example/Makefile > tmp_makefile
 mv tmp_makefile ggcat/crates/capi/ggcat-cpp-api/example/Makefile
-sed 's/^[[:space:]][[:space:]]*cp.*$//g' ggcat/crates/capi/ggcat-cpp-api/example/Makefile > tmp_makefile
-mv tmp_makefile ggcat/crates/capi/ggcat-cpp-api/example/Makefile
+
 sed 's/g++/$(CXX)/g' integration_tests/reference_implementation/Makefile > tmp_makefile
 mv tmp_makefile integration_tests/reference_implementation/Makefile
+
 sed 's/g++/$(CXX)/g' SBWT/KMC/Makefile > tmp_makefile
 mv tmp_makefile SBWT/KMC/Makefile
 sed 's/g++/$(CXX)/g' SBWT/KMC/tests/kmc_CLI/trivial-k-mer-counter/Makefile > tmp_makefile
