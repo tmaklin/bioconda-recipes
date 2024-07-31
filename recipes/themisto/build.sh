@@ -23,7 +23,9 @@ echo '#include <cstdint>' | cat - ggcat/crates/capi/ggcat-cpp-api/src/ggcat.hh >
 
 sed 's/ar cr/$(AR) cr/g' ggcat/crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
 mv tmp_makefile ggcat/crates/capi/ggcat-cpp-api/Makefile
-sed 's/^[[:space:]][[:space:]]*cp.*$//g' ggcat/crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
+sed 's/cargo build --release/cargo build --release --target-dir ./g' ggcat/crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
+mv tmp_makefile ggcat/crates/capi/ggcat-cpp-api/Makefile
+sed 's/cp ..\/..\/..\/target\//cp /g' ggcat/crates/capi/ggcat-cpp-api/Makefile > tmp_makefile
 mv tmp_makefile ggcat/crates/capi/ggcat-cpp-api/Makefile
 
 sed 's/g++/$(CXX)/g' ggcat/crates/capi/ggcat-cpp-api/example/Makefile > tmp_makefile

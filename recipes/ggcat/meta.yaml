@@ -12,11 +12,14 @@ source:
 build:
   number: 0
 
+  ## need MacOS SDK v > 10.12 to build some dependencies but it's not available
+  ## see https://blog.rust-lang.org/2023/09/25/Increasing-Apple-Version-Requirements.html
+  skip: True # [osx]
+
 requirements:
   build:
     - {{ compiler('rust') }}
     - git
-    - openssl # [osx]
 
 test:
   commands:
